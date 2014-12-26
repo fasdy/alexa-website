@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width">
+      <meta name="description" content="Website of Alexa Finlay displays her art portfolio inspired by cityscapes, natural landscapes and flora and fauna of the San Francisco Bay Area and beyond. Includes upcoming events, info about the artist and contact details." />
+
+      <link href='http://fonts.googleapis.com/css?family=Arvo:400,600,700' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400' rel='stylesheet' type='text/css'>
+    
+      <link rel="stylesheet" href="css/style.css">
+      
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+  // This identifies your website in the createToken call below
+  Stripe.setPublishableKey('pk_test_uB7ByzfLZfO1i529adeIlPFR');
+  // ...
+    
+    
+        
+    {
+  id: "tok_u5dg20Gra", // String of token identifier,
+  card: {...}, // Dictionary of the card used to create the token
+  created: 1417738288, // Integer of date token was created
+  currency: "usd", // String currency that the token was created in
+  livemode: true, // Boolean of whether this token was created with a live or test API key
+  object: "token", // String identifier of the type of object, always "token"
+  used: false // Boolean of whether this token has been used
+}
+  
+    
+function stripeResponseHandler(status, response) {
+  var $form = $('#payment-form');
+
+    
+     if (response.error) {
+    // Show the errors on the form
+    $form.find('.payment-errors').text(response.error.message);
+    $form.find('button').prop('disabled', false);
+  } else {
+    // response contains id and card, which contains additional card details
+    var token = response.id;
+    // Insert the token into the form so it gets submitted to the server
+    $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+    // and submit
+    $form.get(0).submit();
+  }
+};
+    
+    jQuery(function($) {
+  $('#payment-form').submit(function(event) {
+    var $form = $(this);
+
+    // Disable the submit button to prevent repeated clicks
+    $form.find('button').prop('disabled', true);
+
+    Stripe.card.createToken($form, stripeResponseHandler);
+
+    // Prevent the form from submitting with the default action
+    return false;
+  });
+});
+  
+
+ 
+    
+    
+</script>
+
+      
+      <style></style>
+      
+        <title>Alexa Finlay | Illustration and Art</title>
+  
+    </head>
+  
+<body>
+  
+        <center>
+        <nav id="nav">
+            <ul>
+        <li><a href="about.html"><span>About</span></a></li>                           
+        <li><a href="portfolio.html"><span>Portfolio</span></a></li>
+             <li><a href="http://blog.alexafinlay.com"><span>Blog</span></a></li>
+        <li><a href="shop.html"><span>Shop</span></a></li>      
+            </ul>
+
+        </nav>
+        </center>
+      
+    <header>          
+      <center>
+        <a href="index.html"><h1>Alexa Finlay</h1></a>
+        <p>Illustration and Art</p>
+      </center>
+    </header>
+      
+    <!--
+      <aside>
+        <center>
+        <img id="arrow-header" src="images/arrows-header-colored.png">
+        </center>
+      </aside>
+ -->
+ 
+<main>    
+    <!--   
+<aside>     
+    <center>
+        <p class="top">LOCATIONS</p>
+        </p>
+    </center>
+</aside>
+    -->
+     
+    <article> 
+     <center>  
+        
+      
+         <br>
+         <p class="top">
+             
+            Custom Painted Pet Portrait
+         </p>
+     
+         
+         
+         
+<form action="" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_uB7ByzfLZfO1i529adeIlPFR"
+    data-amount="2000"
+    data-name="Demo Site"
+    data-description="Custom Pet Portrait ($105.00)"
+    data-image="/128x128.png">
+  </script>
+</form> 
+         
+         <!--<figure class="one-wide">
+             
+         <a href="http://www.society6.com/fasdy" target="_blank"><img src="images/Society6-Items-AlexaFinlay-.jpg" height="80%" width="80%"></a>
+             
+         </figure>
+         -->
+
+
+            </center>
+         </article>
+
+</main>
+          
+ <footer>
+    <!-- <a href="about.html"><p class="top">©<img src="images/finlay-mini.png" align="center"></a></p> -->
+ </footer>
+    
+  </body>
+    
+</html>
